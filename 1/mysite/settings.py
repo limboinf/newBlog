@@ -39,10 +39,10 @@ DATABASES = {
 
 
 # 七牛云存储
-QINIU_ACCESS_KEY = 'aTXUDE1Gz3MMsem2GH5s_nk4XCLuRYiz_XAMkkjP'
-QINIU_SECRET_KEY = 'NUpZChuUdkMnzi7RyJGaIq2OyffSzaVzLxjxqJz0'
-QINIU_BUCKET_NAME = 'beginman'
-QINIU_DOMAIN = 'beginman.qiniudn.com'  # 域名
+QINIU_ACCESS_KEY = '*********************'
+QINIU_SECRET_KEY = '********************'
+QINIU_BUCKET_NAME = '*****'
+QINIU_DOMAIN = 'beginman.qiniudn.com'  # 个人的七牛域名
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
