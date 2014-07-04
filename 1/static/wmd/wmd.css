@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+/*
+** 
+** Styles for django-wmd-editor.
+** https://github.com/jpartogi/django-wmd-editor
+** 
+** Changelog:
+** 
+** 2011/06/22
+**      * Cleaned styles and fixed a few errors.
+**      * Micky Hulse (hulse.me).
+** 
+*/
+
+.wmd-panel {
+	/*margin-left: 25%;
+	margin-right: 25%;
+	*/
+	width: 50%;
+	min-width: 100%;
+}
+#wmd-editor { background-color: none; }
+#wmd-button-bar { width: 100%; }
+#wmd-input {
+	height: 500px;
+	width: 100%;
+	/*background-color: #efefef;
+	border: 1px solid #999;
+	*/
+}
+#wmd-preview {width: 100%;margin-top:10px;word-wrap:break-word}
+#wmd-output { background-color: none; }
+#wmd-button-row {
+	position: relative;
+	height: 20px;
+	margin: 10px 5px 5px;
+	padding: 0;
+}
+#wmd-button-row li { list-style: none; }
+.wmd-spacer {
+	width: 1px;
+	height: 20px;
+	margin-left: 14px;
+	background-color: #ccc;
+	position: absolute;
+	display: inline-block;
+}
+.wmd-button {
+	width: 20px;
+	height: 20px;
+	margin: 0 5px;
+	background-image: url(/site_media/wmd/images/wmd-buttons.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	display: inline-block;
+}
+.wmd-button > a {
+	width: 20px;
+	height: 20px;
+	margin: 0 5px;
+	position: absolute;
+	display: inline-block;
+}
+/* Sprite button slicing style information: */
+#wmd-bold-button { left: 0; }
+#wmd-italic-button  {
+	left: 25px;
+	background-position: -20px 0;
+}
+#wmd-spacer1 { left: 50px; }
+#wmd-link-button {
+	left: 75px;
+	background-position: -40px 0;
+}
+#wmd-quote-button {
+	left: 100px;
+	background-position: -60px 0;
+}
+#wmd-code-button {
+	left: 125px;
+	background-position: -80px 0;
+}
+#wmd-image-button {
+	left: 150px;
+	background-position: -100px 0;
+}
+#wmd-spacer2 {
+	left: 175px;
+}
+#wmd-olist-button {
+	left: 200px;
+	background-position: -120px 0;
+}
+#wmd-ulist-button {
+	left: 225px;
+	background-position: -140px 0;
+}
+#wmd-heading-button {
+	left: 250px;
+	background-position: -160px 0;
+}
+#wmd-hr-button {
+	left: 275px;
+	background-position: -180px 0;
+}
+#wmd-spacer3 { left: 300px; }
+#wmd-undo-button {
+	left: 325px;
+	background-position: -200px 0;
+}
+#wmd-redo-button {
+	left: 350px;
+	background-position: -220px 0;
+}
+#wmd-help-button {
+	right: 0;
+	background-position: -240px 0;
+}
+.wmd-prompt-background { background-color: #000; }
+.wmd-prompt-dialog {
+	border: 1px solid #999;
+	background: #f5f5f5;
+}
+.wmd-prompt-dialog > div { font: .8em arial, helvetica, sans-serif; }
+.wmd-prompt-dialog > form > input[type="text"] {
+	border: 1px solid #999;
+	color: #000;
+}
+.wmd-prompt-dialog > form > input[type="button"]{
+	font: bold .8em "trebuchet MS", helvetica, sans-serif;
+	border: 1px solid #888;
+}
+
+/*
+** 
+** Some django-wmd overrides to make admin interface look ok:
+** 
+*/
+
+.wmd-panel { text-align: left; }
+.wmd-admin { margin-top: 1em; }
+.wmd-admin #wmd-preview { padding: 1em; }
+.wmd-admin #wmd-preview hr {
+	border: 0;
+	border-top: 1px solid #666;
+	height: 1px;
+	margin: 1em 0;
+	padding: 0;
+	display: block;
+}
+.wmd-admin #wmd-preview ul,
+.wmd-admin #wmd-preview ol {
+	margin-left: 0;
+	padding-left: 5px;
+}
+.wmd-admin #wmd-preview h1,
+.wmd-admin #wmd-preview h2,
+.wmd-admin #wmd-preview h3,
+.wmd-admin #wmd-preview h4,
+.wmd-admin #wmd-preview h5,
+.wmd-admin #wmd-preview h6 {
+	color: #333;
+	background: none;
+	margin: .5em 0;
+	padding: 0;
+}
+.wmd-admin #wmd-preview ul,
+.wmd-admin #wmd-preview ol { margin-left: 2em; }
+.wmd-admin #wmd-preview code,
+.wmd-admin #wmd-preview pre {
+	padding-left: 20px;
+	background-color: #efefef;
+}
+.wmd-admin #wmd-preview p {
+	margin-left: 0;
+	padding-left: 5px;
+}

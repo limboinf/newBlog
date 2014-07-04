@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-signin" role="form" action="/manage/user/pwd/" method='post'>{% csrf_token %}
+        <h2 class="form-signin-heading">修改密码</h2>
+        {{ form.as_p }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">保 存</button>
+      </form>
+{% endblock %}

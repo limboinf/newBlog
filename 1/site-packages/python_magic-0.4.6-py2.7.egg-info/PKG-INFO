@@ -1,0 +1,14 @@
+Metadata-Version: 1.0
+Name: python-magic
+Version: 0.4.6
+Summary: File type identification using libmagic
+Home-page: http://github.com/ahupp/python-magic
+Author: Adam Hupp
+Author-email: adam@hupp.org
+License: PSF
+Description: This module uses ctypes to access the libmagic file type
+        identification library.  It makes use of the local magic database and
+        supports both textual and MIME-type output.
+        
+Keywords: mime magic file
+Platform: UNKNOWN

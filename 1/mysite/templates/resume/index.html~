@@ -1,0 +1,264 @@
+{% extends 'base.html' %}
+{% block css %}
+<link href="/site_media/resume/css/resume.css" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-12">
+					<h1>BeginMan</h1>
+					<h3>Python|Django开发 <small class="text-danger">一个缜思些许孤独的代码诗人！</small></h3>
+				    <small class="text-muted">姓名：方朋 | 民族： 汉 | 年龄：23岁 | 户籍：河南信阳 | 现住址： 郑州市 | 爱好： 看书，篮球，音乐， 写作， 诗歌</small>
+                </div><!--/.col-lg-12 -->
+			</div><!--/.row -->
+		</div><!--/.container -->
+	</div><!--/.#headerwrap -->
+
+
+	<section id="resume" name="resume"></section>
+	<!--EDUCATION DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+				<div class="col-lg-2 col-lg-offset-1">
+					<h3 style="color: #555">教育背景</h3>
+				</div>
+				<div class="col-lg-6">
+					<p><t>中州大学</t><br>
+						专科 <br>
+						<i>3 Years Course</i>
+					</p>
+				</div>
+
+		</div><!--/.row -->
+		<br>
+		<hr>
+	</div><!--/.container -->
+
+
+	<!--WORK DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+				<div class="col-lg-2 col-lg-offset-1">
+					<h3 style="color: #555">工作和学习经历</h3>
+				</div>
+				<div class="col-lg-6">
+					<p><t>校记者</t><br>
+						校报编撰，采访，写作，校印 <br>
+					</p>
+					<p><more>任职2年，大学期间担任校记者团团长，管理团队，校领导采访，新闻撰写，文章编撰/校对等文字和管理工作。</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2010年9月- 2012年12月</sm></p>
+				</div>
+
+                <div class="col-lg-6 col-lg-offset-3">
+					<p><t>耶鲁教育集团</t><br>
+						web开发 <br>
+					</p>
+					<p><more>任职半年，从事前端开发工作兼策划工作。</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2012年9月- 2013年1月</sm></p>
+				</div>
+
+				<div class="col-lg-6 col-lg-offset-3">
+					<p><t>郑州创恒实业有限公司</t><br>
+						python/django开发 <br>
+					</p>
+					<p><more> 从2013年年初至今（尚未离职）.利用python/django开发项目（ <a href="http://www.tbkt.cn">同步课堂</a>）</more></p>
+				</div>
+				<div class="col-lg-3">
+					<p><sm>2013年3月 - 至今</sm></p>
+				</div>
+		</div><!--/.row -->
+		<br>
+		<hr>
+	</div><!--/.container -->
+    <!--作品展示-->
+    	<!--EDUCATION DESCRIPTION -->
+	<div class="container desc">
+		<div class="row">
+				<div class="col-lg-2 col-lg-offset-1">
+					<h3 style="color: #555">作品展示</h3>
+				</div>
+				<div class="col-lg-6">
+					<p><t>CodeTheme社区</t><br>
+						Python/Django/Mysql/BootStrap/ <br>
+						<i>一个社区型网站搭建在新浪SAE上， <a href="http://codetheme.sinaapp.com/" target="_blank">网址</a></i>
+					</p>
+				</div>
+                <div class="col-lg-3">
+                    <img src="/site_media/resume/images/item1.png" class="img-thumbnail" width="200px;" alt=""/>
+                </div>
+
+                <div class="col-lg-6 col-lg-offset-3">
+                 <p><t>Blog</t><br>
+						Python/Django/Mysql/BootStrap/ <br>
+						<i>个人博客（也就是这个）搭建在新浪SAE上， <a href="http://beginman.sinaapp.com/" target="_blank">网址</a></i>
+					</p>
+				</div>
+                <div class="col-lg-3">
+                    <img src="/site_media/resume/images/item2.png" width="200px;" class="img-thumbnail" alt=""/>
+                </div>
+
+                <div class="col-lg-6 col-lg-offset-3">
+                 <p><t>PythonTool</t><br>
+						Python <br>
+						<i>Python编写的各种小工具，小应用，放在github上了。 <a href="https://github.com/BeginMan/pytool" target="_blank">网址</a></i>
+					</p>
+				</div>
+                <div class="col-lg-3">
+                    <img src="/site_media/resume/images/item3.png" width="200px;" class="img-thumbnail" alt=""/>
+                </div>
+                <div class="col-lg-6 col-lg-offset-3">
+                 <p><t>同步课堂</t><br>
+						Python/Django/Mysql <br>
+						<i>团队协作共同开发，中小学在线教育，智能学测评的网站。 <a href="http://www.tbkt.cn/" target="_blank">网址</a></i>
+					</p>
+				</div>
+                <div class="col-lg-3">
+                    <img src="/site_media/resume/images/item4.png" width="200px;" class="img-thumbnail" alt=""/>
+                </div>
+
+		</div><!--/.row -->
+
+		<br>
+		<hr>
+	</div><!--/.container -->
+
+
+	<!--SKILLS DESCRIPTION -->
+	<div id="skillswrap">
+		<div class="container">
+			<div class="row">
+					<div class="col-lg-2 col-lg-offset-1">
+						<h3 style="color: #fff2ec">技能</h3>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="python" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>Python</p>
+						<br>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="Django" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>Django</p>
+						<br>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="Mysql" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>Mysql</p>
+						<br>
+					</div>
+
+					<div class="col-lg-3 col-lg-offset-3 centered">
+						<canvas id="Javascript" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>Javascript/jQuery/AngularJS/Node.js</p>
+						<br>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="web" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>HTML/CSS</p>
+						<br>
+					</div>
+					<div class="col-lg-3 centered">
+						<canvas id="Linux" height="130" width="130" style="width: 130px; height: 130px;"></canvas>
+						<p>Linux</p>
+						<br>
+					</div>
+
+			</div><!--/.row -->
+			<br>
+		</div><!--/.container -->
+
+	</div><!--/ #skillswrap -->
+
+	<section id="work" name="work"></section>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+{% endblock %}
+{% block js %}
+<script src="/site_media/resume/Chart.js"></script>
+    <script>
+    $(function(){
+        $('.col-md-3').hide();
+        $('.col-md-9').attr('class', 'col-md-12');
+        // python
+        var doughnutData = [
+            {
+                value: 70,
+                color:"#1abc9c"
+            },
+            {
+                value : 30,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("python").getContext("2d")).Doughnut(doughnutData);
+       // Django
+       var doughnutData = [
+            {
+                value: 80,
+                color:"#1abc9c"
+            },
+            {
+                value : 20,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("Django").getContext("2d")).Doughnut(doughnutData);
+        //Mysql
+        var doughnutData = [
+            {
+                value: 60,
+                color:"#1abc9c"
+            },
+            {
+                value : 40,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("Mysql").getContext("2d")).Doughnut(doughnutData);
+        //Javascript
+        var doughnutData = [
+            {
+                value: 50,
+                color:"#1abc9c"
+            },
+            {
+                value : 50,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("Javascript").getContext("2d")).Doughnut(doughnutData);
+        //web
+        var doughnutData = [
+            {
+                value: 60,
+                color:"#1abc9c"
+            },
+            {
+                value : 40,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("web").getContext("2d")).Doughnut(doughnutData);
+        //Linux
+        var doughnutData = [
+            {
+                value: 60,
+                color:"#1abc9c"
+            },
+            {
+                value : 40,
+                color : "#ecf0f1"
+            }
+        ];
+        var myDoughnut = new Chart(document.getElementById("Linux").getContext("2d")).Doughnut(doughnutData);
+    })
+    </script>
+{% endblock %}

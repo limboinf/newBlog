@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load markup %}
+{% block css %}
+    <link href="/site_media/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="row">
+<form enctype="multipart/form-data" method="post" action="{{ request.path }}" id="uploadform">
+            <h2 class="form-signin-heading">上传笔记</h2>
+            <div class="form-group">
+                <label for="exampleInputFile">上传文档</label>
+                <input type="file" id="blog" name="blog">
+                <p class="help-block">只能处理.md格式的文档.</p>
+             </div>
+            <p><b>类型：</b></p>
+            <div class="btn-group" id="codes">
+               {% for obj in types %}
+                <button type="button" class="btn btn-default" style="margin-right: 10px;display: block" id="c_{{ obj.id }}">{{ obj.name }}</button>
+               {% endfor %}
+               <input type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#addType" style="margin-right: 10px;display: block" id="adds" value="添加分类">
+            </div>
+            <p></p>
+
+            <p><b>添加标签：</b></p>
+            <div>
+                <input type="text" id="yourtags" data-role="tagsinput" placeholder="add Tag,Enter" />
+            </div>
+            {% if has_tags %}
+                 <p id="has_tags" style="display: none">已存在的标签：{% for obj in has_tags %}<span class="label label-primary" onclick="addIt('{{ obj.tag.name }}')">{{ obj.tag.name }}</span>{% endfor %}
+            {% endif %}
+            {% if tags %}<p id="tags_">已存在的标签：{% for obj in tags %}<span style="margin-bottom: 8px;" class="label label-primary" onclick="addIt('{{ obj.name }}')">{{ obj.name }}</span>&nbsp;{% endfor %}</p>{% endif %}
+            <a href="javascript:;" id="upload" class="btn btn-lg btn-primary btn-block"  data-loading-text="正在加载...">发　布</a>
+            <!--隐藏域-->
+            <input type="hidden" name="id_tag"/>
+            <input type="hidden" name="type"/>
+  </form>
+</div>
+    <br/>
+
+
+<!-- Modal 添加标签 -->
+<div class="modal fade" id="addType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加标签:</h4>
+      </div>
+      <div id="s_ms_box">
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <label for="msTitle">名称</label>
+            <p class="small" style="color: #c04b4b; font-weight: bold; display: none" id="ms_title">*标题必填</p>
+            <input type="type" class="form-control" id="msTitle" placeholder="名称">
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" onclick="addType()">添加</button>
+      </div>
+      </div>
+
+      <div id="sendok" style="display: none">
+          <div class="modal-body">
+          <p id="tips">添加成功</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+{% endblock %}
+{% block js %}
+    <script src="/site_media/js/main.js"></script>
+    <script src="/site_media/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
+    <script>
+    $(function(){
+
+    })
+    </script>
+{% endblock %}

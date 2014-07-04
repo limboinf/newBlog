@@ -1,0 +1,35 @@
+<!--分类-->
+<div class="panel panel-default">
+  <div class="panel-heading">博客分类</div>
+  <div class="panel-body">
+    <p class="form-group has-warning" id="b_type">
+        {% for obj in types %}
+            <a href="/blog/type/{{ obj.id }}/" class="label label-warning" style="margin:0 auto; margin-bottom: 5px;line-height:30px; display: block; width:200px;">{{ obj.name }}&nbsp;({{ obj.getCount }})</a>
+        {% endfor %}
+    </p>
+  </div>
+</div>
+
+<!--热门-->
+<div class="panel panel-default">
+  <div class="panel-heading">热门博客</div>
+  <div class="panel-body">
+    <p class="form-group has-warning" id="b_hot">
+        {% for obj in hot %}
+        <p>{{ forloop.counter }}.&nbsp;&nbsp;<a href="/blog/{{ obj.id }}/">{{ obj.title }}</a></p>
+        {% endfor %}
+    </p>
+  </div>
+</div>
+
+<!--标签云-->
+<div class="panel panel-default">
+  <div class="panel-heading">标签云</div>
+  <div class="panel-body">
+    <p class="form-group has-warning" id="b_tag">
+        {% for obj in tag %}
+            <a href="/blog/tag/{{ obj.id }}/"><span style="font-size:{{obj.size}}px;color:{{obj.rgb}}">{{obj.name}}&nbsp;</span></a>
+        {% endfor %}
+    </p>
+  </div>
+</div>

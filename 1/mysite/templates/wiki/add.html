@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load markup %}
+{% block css %}
+    <link href="/site_media/css/pygments-css-master/emacs.css/" rel="stylesheet">
+    <link href="/site_media/wmd/wmd.css/" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="row">
+        <form class="form-signin2" role="form" id="themeform" action="{{ request.path }}" method="post">
+         {% csrf_token %}
+            <h2 class="form-signin-heading">添加WIKI--{{ typename }}</h2>
+
+            <div class="panel panel-default">
+                  <div class="panel-heading"><b>内容：</b></div>
+                  <div class="panel-body">
+                    {{ form.content }}
+                  </div>
+            </div>
+              <!--预览-->
+              <div class="panel panel-default" id="prew_box">
+                  <div class="panel-heading">内容即时预览</div>
+                  <div class="panel-body">
+                    <div id="prew_c"></div>
+                  </div>
+              </div>
+            <input type="hidden" value="{{ id|default:0 }}" id="id" name="id"/>
+            <input type="submit" class="btn btn-lg btn-primary btn-block" value="发 布">
+        </form>
+  </div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="/site_media/wmd/wmd.js"></script>
+    <script src="/site_media/wmd/showdown.js"></script>
+    <script>
+    $(function(){
+        $('#prew_c').append($('.wmd-panel:last'));
+
+    })
+    </script>
+{% endblock %}

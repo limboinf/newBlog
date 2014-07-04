@@ -1,0 +1,6 @@
+README
+weibo.py
+sinaweibopy.egg-info/PKG-INFO
+sinaweibopy.egg-info/SOURCES.txt
+sinaweibopy.egg-info/dependency_links.txt
+sinaweibopy.egg-info/top_level.txt

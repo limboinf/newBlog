@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% load mytags %}
+{% block content %}
+        <div class="row">
+        <p class="alert alert-info">标签名称： <b>{{ tag_name }}</b>  共{{ blogs|length|default:0 }}篇</p>
+        {% autopaginate blogs %}
+        {% for obj in blogs %}
+        <div class="media">
+          <a class="pull-left" href="/blog/{{ obj.blog.id }}/">
+            <img class="media-object img-circle" src="{{ obj.blog.img }}" width="120" height="120">
+          </a>
+          <div class="media-body">
+             <div class="thumbnail">
+              <div class="caption">
+                <p><!--标题.类别-->
+                    <strong>
+                        <a href="/blog/{{ obj.blog.id }}/">{{ obj.blog.title }}</a>
+                        <a href="/blog/type/{{ obj.blog.type }}/" class="label label-warning navbar-text navbar-right">{{ obj.blog.getType.name }}</a>
+                    </strong>
+                </p>
+                <small>{{ obj.blog.summary|cut_title:'200' }}</small>
+                <p class="small_hr">
+                    作者：<a href="http://about.me/beginman" class="small">BeginMan</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;热度：{{ obj.blog.counts }}℃
+                    {% if obj.getTags %}&nbsp;&nbsp;&nbsp;&nbsp;标签：{% for i in obj.blog.getTags %}<a href="/blog/tag/{{ i.tag.id }}/" class="label label-danger">{{ i.tag.name }}</a> &nbsp;{% endfor %}{% endif %}
+                    {% if user.is_active %}
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="text-info" onclick="delBlog({{ obj.id }})">删除</a>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="/manage/add/?id={{ obj.id }}" class="text-danger" id="edit_">编辑</a>
+                    {% endif %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        </div>
+    <div class="text-center text-danger">{% paginate %}</div>
+
+    {% endblock %}
+
+

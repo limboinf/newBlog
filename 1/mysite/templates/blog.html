@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load mytags %}
+{% load markup %}
+{% block css %}
+    <link href="/site_media/css/pygments-css-master/emacs.css/" rel="stylesheet">
+    <link href="/site_media/wmd/wmd.css/" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<!--blog-->
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <ul class="media-list">
+      <li class="media">
+        <div class="media-body">
+          <h3 class="media-heading">{{ blog.title }}</h3>
+            <hr style="margin: 10px 0;" />
+            <p class="small text-muted">
+              <a href="http://about.me/beginman">BeginMan</a>
+              发布于 {{ blog.add_date|fun }} &nbsp;&nbsp;
+              持续热度：{{ blog.counts }}℃&nbsp;&nbsp;
+              类别：<a href="/blog/type/{{ blog.type}}/" class="label label-warning small">{{ blog.getType.name }}</a>
+              {% if blog.getTags %}&nbsp;&nbsp;标签：{% for i in blog.getTags %}<a href="/blog/tag/{{ i.tag.id }}/" class="label label-danger small">{{ i.tag.name }}</a> {% endfor %}{% endif %}
+              {% if user.is_active %}
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="text-info" onclick="delBlog({{ blog.id }})">删除</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="/manage/add/?id={{ blog.id }}" class="text-danger" id="edit_">编辑</a>
+              {% endif %}
+            </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="panel-body">
+    {{ blog.content_show }}
+  </div>
+</div>
+    <!--警告-->
+    <div class="alert alert-info">
+       <div class="row">
+           <div class="col-md-6">
+               <p>作者：BeginMan</p>
+               <p>网址: <a href="{{ request.session.domain }}{{ request.path }}">{{ request.session.domain }}{{ request.path }}</a></p>
+               本文版权归作者，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。</div>
+           <div class="col-md-6"><a href="http://weibo.com/u/2530590633?s=6uyXnP" target="_blank"><img border="0" src="http://service.t.sina.com.cn/widget/qmd/2530590633/fe5f84f0/7.png"/></a></div>
+       </div>
+    </div>
+<p>{% if pn.pre %}<a href="/blog/{{ pn.pre }}/"><span class="label label-info"><i class="icon-arrow-left icon-white"></i>&nbsp;上一篇：{{ title_pre }}</span></a>{% endif %}
+   {% if pn.next %}<a href="/blog/{{ pn.next }}/" style="float: right"><span class="label label-info"><i class="icon-arrow-right icon-white"></i>&nbsp;下一篇：{{ title_next }}</span></a>{% endif %}
+</p>
+   <hr/>
+
+
+<!-- 多说评论框 start -->
+ <div class="ds-thread" data-thread-key="{{ id }}" data-title="{{ blog.title }}" data-url="{{ request.session.domain }}{{ request.path }}">
+ </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"beginman"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+{% endblock %}
+
+{% block js %}
+    <script>
+    $(function(){
+        // 图片处理
+         $('.panel-body').find('img').each(function(){
+             $(this).addClass('img-thumbnail');
+              var img_w = $(this).width();//图片宽度
+               var img_h = $(this).height();//图片高度
+               if(img_w>800){//如果图片宽度超出容器宽度--要撑破了
+                    var height = (w*img_h)/img_w; //高度等比缩放
+                    $(this).css({"width":w,"height":height});//设置缩放后的宽度和高度
+                }
+             //$(this).css('width', '800px');
+         })
+    })
+    </script>
+{% endblock %}

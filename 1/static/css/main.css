@@ -1,0 +1,147 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+  background:url("../img/gray_jean.png") #FFF;
+}
+
+.theme-dropdown .dropdown-menu {
+  display: block;
+  position: static;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+#footer {
+  background-color: #444444;
+  padding: 70px 0px 35px 0px;
+  color: #FFF;
+  line-height: 30px; }
+  #footer h1, #footer h2, #footer h3, #footer h4, #footer h5 {
+    color: #FFF;
+    margin-bottom: 0px; }
+  #footer .footer-list-heading {
+    font-family: ProximaNova-Bold, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    line-height: 28px;
+    margin-top: 0; }
+  #footer #footer-form {
+    height: 33px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    color: #eeeeee;
+    vertical-align: middle;
+    background-color: #757575;
+    border: none;
+    border-radius: 2px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.1); }
+  #footer #facebook-follow iframe {
+    margin-top: -7px;
+    margin-left: 10px; }
+  #footer iframe {
+    float: left; }
+  #footer nav li a {
+    color: #fff;
+    text-decoration: none;
+    opacity: .7;
+    transition: 0.07s linear;
+    -moz-transition: 0.07s linear;
+    -webkit-transition: 0.07s linear; }
+  #footer nav li a:hover {
+    opacity: 1; }
+
+#sub-footer {
+  background-color: #333333;
+  padding: 40px 0px 30px 0px;
+  color: #999;
+  line-height: 50px;
+  font-size: 12px;
+  margin-top: 0px;
+  margin-bottom: 0px; }
+  #sub-footer h1, #sub-footer h2, #sub-footer h3, #sub-footer h4, #sub-footer h5 {
+    color: #bbbbbb;
+    margin-bottom: 0px; }
+  #sub-footer #copyright-section {
+    color: #999;
+    margin: 0px 0px 0px 0px !important; }
+    #sub-footer #copyright-section a {
+      text-decoration: none; }
+    #sub-footer #copyright-section a:hover {
+      color: #bbb; }
+  #sub-footer a {
+    color: #999; }
+  #sub-footer #transparent {
+    opacity: .4;
+    transition: 0.07s linear;
+    -moz-transition: 0.07s linear;
+    -webkit-transition: 0.07s linear; }
+    #sub-footer #transparent:hover {
+      opacity: .8; }
+  #sub-footer #love {
+    text-align: right; }
+  #sub-footer .love-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url("../img/heart.png");
+    display: inline-block;
+    outline: none;
+    border: none;
+    margin: 0px 3px -3px 3px; }
+    @media (-webkit-min-device-pixel-ratio: 2), (-moz-min-device-pixel-ratio: 2) {
+      #sub-footer .love-icon {
+        background-image: url("/static/images/home/heart@2x.png");
+        -webkit-background-size: 16px 14px; } }
+
+
+.small_hr{
+     border-style: solid none none;
+    border-color: rgba(204, 204, 204, 0.26);
+    border-width: 1px 0 0;
+    margin:10px 0;
+    padding: 10px 0 3px 0;
+    font-size: 13px;
+    color: #999988;
+
+}
+/*page*/
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination>a, .pagination>span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.428571429;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+/* actGotop */
+.actGotop{position:fixed;_position:absolute;bottom:100px;right:50px;width:150px;height:195px;display:none;}
+.actGotop a,.actGotop a:link{width:150px;height:195px;display:inline-block;background:url(../img/blog7year_gotop.png) no-repeat;_background:url(../img/blog7year_gotop.gif) no-repeat;outline:none;}
+.actGotop a:hover{background:url(../img/blog7year_gotopd.gif) no-repeat;outline:none;}
+#tags_{
+    clear: both; /* 清除左右浮动 */
+    word-break: break-word; /* 文本行的任意字内断开 */
+    word-wrap: break-word; /* IE */
+    white-space: -moz-pre-wrap; /* Mozilla */
+    white-space: -hp-pre-wrap; /* HP printers */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: pre; /* CSS2 */
+    white-space: pre-wrap; /* CSS 2.1 */
+    white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+}

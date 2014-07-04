@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link href="/site_media/uploadify/uploadify.css/" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="col-md-5">
+    <img src="{{ img_obj.img|default:'/site_media/img/blog/4.jpg' }}" alt="" id="img_prew" width="180" height="180"/>
+    <span><a href="javascript:;" id="picdel" type="{{ img_obj.id|default:0 }}">del</a></span>
+    <p>
+        <input id="file_upload" name="file_upload" type="file">
+        <a href="javascript:$('#file_upload').uploadify('upload','*')" class="label label-info text-right">上传</a>
+    </p>
+</div>
+
+<div class="col-md-7">
+    <form class="form-signin2" role="form" id="Pictypeform" action="{{ request.path }}" method="post">
+     {% csrf_token %}
+        <h2 class="form-signin-heading">添加图片分类</h2>
+        <p>{{ form.title }}</p>
+        <p>{{ form.desc }}</p>
+        <input type="hidden" value="{{ img_obj.id|default:0 }}" id="pid" name="pid"/>
+        <input type="hidden" value="{{ id|default:0 }}" id="id" name="id"/>
+        <a class="btn btn-lg btn-primary btn-block" href="javascript:;" id="save">保存</a>
+    </form>
+</div>
+
+{% endblock %}
+{% block js %}
+    <script src="/site_media/uploadify/jquery.uploadify.min.js"></script>
+
+    <script>
+   $(function() {
+       // 图片上传预览
+        $('#file_upload').uploadify({
+            'auto'     : false,
+            'buttonText' : '选择封面图',
+            'fileSizeLimit' : '1MB',
+            'fileTypeExts' : '*.gif; *.jpg; *.png',
+            'method'   : 'post',
+            'multi'    : false,     // 一次只能选择一个文件
+            'uploadLimit' : 1,      //定义允许的最大上传数量。当达到或者超过该数值时，将触发 onUploadError事件。
+            'swf'      : '/site_media/uploadify/uploadify.swf',    //指定上传控件的主体文件
+            'uploader' : '/manage/pic/upload/',                      //指定服务器端上传处理路径
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) { // 上传失败
+                alert(file.name + ' 上传失败。详细信息: ' + errorString);
+            },
+            'onUploadSuccess' : function(file, data, response) {    // 上传成功
+                var r = data.evalJson();
+                var pid = r.data.id;     // 图片id
+                var purl = r.data.url;   // 图片路径
+                $('#img_prew').attr('src', purl);
+                $('#pid').attr('value', pid);
+                $('#picdel').attr('type', pid);
+            },
+            'onCancel' : function(file) {       // 取消
+                alert('The file ' + file.name + ' was cancelled.');
+            }
+        });
+       submitForm();        // save
+    });
+    // 提交表单
+    function submitForm(){
+        $('#save').click(function(){
+            var pid = $('#pid').val();
+            pid == 0 ? alert('请上传分类的封面'):$('#Pictypeform').submit();
+        })
+    }
+    </script>
+{% endblock %}

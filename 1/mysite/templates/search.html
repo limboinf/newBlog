@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<p class="alert alert-danger">{% if key %}共检索出{{ blogs|length }}条与 <code>{{ key }}</code> 相关的数据{% else %}Sorry,没有检索到相关信息.{% endif %}</p>
+    {% for obj in blogs %}
+        <p><span class="label label-info">{{ forloop.counter }}</span>&nbsp;&nbsp;<a href="/blog/{{ obj.id }}/">{{ obj.title }}</a></p>
+    {% endfor %}
+{% endblock %}

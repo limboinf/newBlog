@@ -1,0 +1,32 @@
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">BeginMan的博客</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">BeginMan</a>
+        </div>
+        <div class="navbar-collapse collapse" id="webnav">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Blog</a></li>
+            <li id="wiki"><a href="/wiki/">Wiki</a></li>
+            <li id="pic"><a href="/pic/">Picture</a></li>
+            <li id="about"><a href="/about/">About</a></li>
+            <li id="contact"><a href="/resume/">Resume</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+          <li id="manage"><a href="/manage/add/">Add+</a></li>
+          <li id="manage"><a href="/manage/upload/">Upload+</a></li>
+          <li><a href="/">Hi,BeginMan</a></li>
+          <li><a href="/logout/">logout</a></li>
+          {% endif %}
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>

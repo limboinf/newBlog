@@ -1,0 +1,8 @@
+body {
+	background:url(../img/bg2.jpg);
+    background-position: 0 0; /* 元素的左上角 */
+    background-repeat: no-repeat; /* 不平铺。图片只展示一次。 */
+    background-attachment: fixed;
+    background-color: #999;
+    background-size: cover;
+}

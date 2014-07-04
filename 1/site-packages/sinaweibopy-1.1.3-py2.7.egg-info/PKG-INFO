@@ -1,0 +1,34 @@
+Metadata-Version: 1.1
+Name: sinaweibopy
+Version: 1.1.3
+Summary: Sina Weibo OAuth 2 API Python SDK
+Home-page: https://github.com/michaelliao/sinaweibopy
+Author: Michael Liao
+Author-email: askxuefeng@gmail.com
+License: UNKNOWN
+Download-URL: https://github.com/michaelliao/sinaweibopy
+Description: Sina Weibo OAuth 2 API Python SDK
+        
+        This software is a 100% pure Python interface to Sina Weibo API which provides OAuth2.0 authentication and API calling wrapper.
+        
+        You can find docs and source code at:
+        
+        http://michaelliao.github.com/sinaweibopy/
+        
+        Developed and mantained by Michael Liao. Please feel free to report bugs and your suggestions at:
+        
+        https://github.com/michaelliao/sinaweibopy
+        
+        For more information, please refer to the wiki:
+        
+        https://github.com/michaelliao/sinaweibopy/wiki/OAuth2-HOWTO
+        
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% load mytags %}
+{% block css %}
+    <link href="/site_media/css/pic.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+ <ol class="breadcrumb">
+  <li><a href="#">图片首页</a></li>
+  <li><a href="javascript:;">{{ type.title }}</a></li>
+  {% if user.is_active %}
+     <li class="active" style="font-size: 13px;"><a href="/manage/pic/upload_my_pic/{{ type.id }}/">上传图片</a></li>
+  {% endif %}
+ </ol>
+
+ <div id="container">
+    {% autopaginate pics 30 %}
+    {% for obj in pics %}
+        {% if forloop.counter == 1 %}
+            <img class="lazy img-responsive" src="/site-media/lazyload/img/grey.gif" data-original="{{ obj.getPic.img }}" width="800" height="574" alt=""><br/>
+
+        {% else %}
+            <img class="lazy img-responsive" data-original="{{ obj.getPic.img }}" width="800" height="574" alt=""><br/>
+        {% endif %}
+        <div class="text-muted">
+            <p class="picdesc">更新于：<span class="text-info">{{ obj.add_date|fun }}</span>&nbsp;&nbsp;&nbsp;-- {{ obj.desc }}</p>&nbsp;&nbsp;
+            {% if user.is_active %}
+                <textarea class="form-control picdesc_edit" rows="2" style="display: none">{{ obj.desc }}</textarea>
+                <a href="javascript:;" class="mypicdel" type="{{ obj.id }}"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;
+                <a href="javascript:;" class="mypic_edit" type="{{ obj.id }}"><span class="glyphicon glyphicon-edit"></span></a>
+            {% endif %}
+        </div>
+        <hr/>
+    {% endfor %}
+ </div>
+<div class="text-center text-danger">{% paginate %}</div>
+
+<!-- 多说评论框 start -->
+    <!-- 多说评论框 照片评论 key以 00开头 -->
+
+ <div class="ds-thread" data-thread-key="00{{ type.id }}" data-title="{{ type.name }}" data-url="{{ request.session.domain }}{{ request.path }}">
+ </div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"beginman"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+{% endblock %}
+{% block js %}
+    <script src="/site_media/lazyload/jquery.lazyload.min.js"></script>
+    <script>
+     $(function() {
+         $("img.lazy").lazyload({
+             effect : "fadeIn"
+         });
+  });
+    </script>
+{% endblock %}

@@ -1,0 +1,95 @@
+body {
+	background:url(../img/bg.jpg);
+}
+
+ul.form {
+	position:relative;
+	background:#fff;
+	width:200px;
+	margin:auto;
+	padding:0;
+	list-style: none;
+	overflow:hidden;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+	
+	-webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+	box-shadow:  1px 1px 10px rgba(0, 0, 0, 0.1);	
+}
+
+.form li a {
+	width:210px;
+	padding-left:20px;
+	height:50px;
+	line-height:50px;
+	display:block;
+	overflow:hidden;
+	position:relative;
+	text-decoration:none;
+	text-transform:uppercase;
+	font-size:14px;
+	color:#686868;
+	
+	-webkit-transition:all 0.2s linear;
+	-moz-transition:all 0.2s linear;
+	-o-transition:all 0.2s linear;
+	transition:all 0.2s linear;			
+}
+
+.form li a:hover {
+	background:#efefef;
+}
+
+.form li a.profile {
+	border-left:5px solid #008747;
+}
+
+.form li a.messages {
+		border-left:5px solid #fecf54;
+}
+	
+.form li a.settings {
+		border-left:5px solid #cf2130;
+}
+
+.form li a.logout {
+		border-left:5px solid #dde2d5;
+}	
+
+.form li:first-child a:hover, .form li:first-child a {
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+
+.form li:last-child a:hover, .form li:last-child a {
+	-webkit-border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+
+.form li a:hover i {
+	color:#e1dace;
+}
+
+
+.w_edit,.w_del {
+	font-size: 10px;
+	background: #ea4f35;
+	padding: 3px 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;		
+	font-style: normal;
+	color: #fff;
+	margin-top: 17px;
+	margin-right: 15px;
+	line-height: 10px;
+	float:right;
+}
+
+.form li.selected a {
+	background:#efefef;
+}

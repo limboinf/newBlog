@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block css %}
+    <link href="/site_media/uploadify/uploadify.css/" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<p class="alert alert-info">类别：<b>{{ pictype.title }}</b></p>
+    <div class="picbox"></div>
+    <p>
+        <input id="file_upload" name="file_upload" type="file">
+        <a href="javascript:$('#file_upload').uploadify('upload','*')" class="label label-info">上传</a>
+    </p>
+<p><a class="btn btn-warning" href="javascript:;" onclick="MyPicSave()" style="width: 100%">保 存</a></p>
+
+{% endblock %}
+{% block js %}
+    <script src="/site_media/uploadify/jquery.uploadify.min.js"></script>
+
+    <script>
+   $(function() {
+       // 图片上传预览
+        $('#file_upload').uploadify({
+            'auto'     : false,
+            'buttonText' : '选择图片',
+            'fileSizeLimit' : '1MB',
+            'fileTypeExts' : '*.gif; *.jpg; *.png',
+            'method'   : 'post',
+            'formData'      : {'type': 1},      // post的额外数据
+            'swf'      : '/site_media/uploadify/uploadify.swf',    //指定上传控件的主体文件
+            'uploader' : '/manage/pic/upload/',                      //指定服务器端上传处理路径
+            'onUploadError' : function(file, errorCode, errorMsg, errorString) { // 上传失败
+                alert(file.name + ' 上传失败。详细信息: ' + errorString);
+            },
+            'onUploadSuccess' : function(file, data, response) {    // 上传成功
+                var r = data.evalJson();
+                var pid = r.data.id;     // 图片id
+                var purl = r.data.url;   // 图片路径
+                str = "<div class='hr_small pic'>\
+                        <p><img src='"+purl+"' class='remote_pic' width='800' type='"+pid+"'></p>\
+                        <textarea class='form-control desc' rows='3'></textarea><hr>\
+                        </div>";
+                $('.picbox').append(str);
+            },
+            'onCancel' : function(file) {       // 取消
+                alert('The file ' + file.name + ' was cancelled.');
+            }
+        });
+    });
+
+    // save
+    function MyPicSave(){
+        var datas = new Array();
+        if($('.hr_small.pic').length >= 1){
+            $('.picbox').find('.hr_small.pic').each(function(){
+                var pid = $(this).find('img.remote_pic').attr('type');
+                var desc = $(this).find('textarea').val();
+                datas.push({'pid':pid, 'desc':desc});
+            })
+            var datas = JSON.stringify(datas);
+            var url = '{{ request.path }}';
+            $.post(url, {'data':datas}, function(data){
+                if(data == 'ok'){
+                    location.href='/pic/{{ pictype.id }}/';
+                }
+            })
+        }
+    }
+    </script>
+{% endblock %}

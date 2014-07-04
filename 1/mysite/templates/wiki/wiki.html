@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load mytags %}
+{% block css %}
+<link href="/site_media/css/zzsc.css" rel="stylesheet" type="text/css">
+
+{% endblock %}
+{% block content %}
+<div class="col-md-3">
+{% if user.is_active %}
+    <p>
+    <span class="label label-warning" style="cursor: pointer" data-toggle="modal" data-target="#addType">添加分类</span>
+    &nbsp;&nbsp;<a href="/manage/wiki/" class="label label-info">管理</a>
+    </p>
+{% endif %}
+<ul class="form">
+    {% for obj in wikiType %}
+		<li {% if obj.id == id %}class="selected"{% endif %}>
+            <a class="messages" href="javascript:;" onclick="window.location.href='/wiki/{{ obj.id }}/'">{{ obj.name }}
+                {% if user.is_active %}
+                <span class="w_edit" type={{ obj.id }}><i class="glyphicon glyphicon-edit"></i></span><span class="w_del" type="{{ obj.id }}"><i class="glyphicon glyphicon-remove"></i></span>
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+</div>
+<div class="col-md-9">
+{% if user.is_active %}<p><a class="label label-warning" href="/wiki/add/{{ id }}/" target="_blank">添加Wiki</a></p>{% endif %}
+    {% for obj in wiki %}
+        <div class="panel panel-default">
+          <div class="panel-body">
+            {{ obj.content_show|safe }}
+          </div>
+          <div class="panel-footer">{{ obj.add_time|fun }}{% if user.is_active %}&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:;" class="wi_del" type="{{ obj.id }}">删除</a>&nbsp;&nbsp;<a href="/wiki/add/{{ id }}/?id={{ obj.id }}">编辑</a>{% endif %}</div>
+        </div>
+    {% empty %}
+    <p>暂无数据</p>
+    {% endfor %}
+</div>
+
+<!--弹窗-->
+<!-- Modal type -->
+<div class="modal fade" id="addType" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">添加WIKI分类:</h4>
+      </div>
+      <div id="s_ms_box">
+      <div class="modal-body">
+        <form role="form">
+          <div class="form-group">
+            <p class="small" style="color: #c04b4b; font-weight: bold; display: none" id="ms_title" type="0">*分类名称必填</p>
+            <input type="type" class="form-control" id="msTitle" placeholder="名称">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" onclick="addWikiType()">添加</button>
+      </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/site_media/artDialog4.1.6/jquery.artDialog.addSkin.js?skin=white"></script>
+    <script>
+    $(function(){
+        $('ul.form li a').click(
+			function(e) {
+				e.preventDefault(); // prevent the default action
+				e.stopPropagation; // stop the click from bubbling
+				$(this).closest('ul').find('.selected').removeClass('selected');
+				$(this).parent().addClass('selected');
+			});
+        wikiManage();
+    })
+
+    // 编辑Or删除
+    function wikiManage(){
+        $('.w_edit').click(function(event){
+            event.stopPropagation();
+            id = $(this).attr('type');
+            $('#addType').modal('show');
+            $('#myModalLabel').text('编辑分类');
+            $('#msTitle').val($(this).parents('a').text());
+            $('#ms_title').attr('type', id);
+
+            //addWikiType(id);
+        });
+        $('.w_del').click(function(event){
+            event.stopPropagation();
+            id = $(this).attr('type');
+            if(confirm('Delete?')){
+                var url='/common/del/';
+                $.post(url, {'model':'wikitype', 'id':id}, function(data){
+                    data == 'ok' ? location.reload() : alert('Error');
+                })
+            }
+        });
+        $('.wi_del').click(function(){
+            id = $(this).attr('type');
+            if(confirm('Delete?')){
+                var url='/common/del/';
+                $.post(url, {'model':'wiki', 'id':id}, function(data){
+                    data == 'ok' ? location.reload() : alert('Error');
+                })
+            }
+        })
+    }
+
+    function addWikiType(){
+        // when elem equal id mind edit.
+        var name = $('#msTitle').val();
+        if(!name){
+            return $('#ms_title').show();
+        }else{
+            var url = '/wiki/add_type/';
+            id = $('#ms_title').attr('type');
+            $.post(url, {'name': name, 'id':id}, function(data){
+                if(data == 'ok'){
+                    location.reload();
+                }else if(data == '0'){
+                    return $('#ms_title').show().text('该分类已存在');
+                }else{
+                    return $('#ms_title').show().text('系统出错');
+                }
+            })
+        }
+    }
+    </script>
+{% endblock %}

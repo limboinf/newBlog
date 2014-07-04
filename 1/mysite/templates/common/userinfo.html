@@ -1,0 +1,14 @@
+<!--个人简介与检索-->
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p class="text-center">
+        <img src="/site_media/img/my.jpg" alt="BeginMan" width="130px" height="130px" class="img-circle">
+    </p>
+    <p class="text-center"><b class="text-warning">BeginMan</b></p>
+    <p class="text-center text-muted">Pythoner.热爱生活和IT.</p>
+    <div class="form-group has-warning">
+        <form action="/blog/search/" method="get">{% csrf_token %}
+        <input type="text" class="form-control" id="search" name="search" placeholder="Search.Enter"></div>
+        </form>
+  </div>
+</div>

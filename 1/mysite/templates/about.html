@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block css %}
+<style>
+body {
+	background:url(/site_media/img/bg3.jpg);
+    background-position: 0 0; /* 元素的左上角 */
+    background-repeat: no-repeat; /* 不平铺。图片只展示一次。 */
+    background-attachment: fixed;
+    background-color: #999;
+    background-size: cover;
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="alert alert-danger">
+<code>BeginMan</code>只不过是我行走江湖的艺名而已，信阳骚年，喜欢编程工作，现在从事Python/Django开发。希望这个博客能带来价值。
+    <hr/>
+    <p>weibo: <a href="http://weibo.com/BeginMan/" target="_blank">http://weibo.com/BeginMan/</a></p>
+    <p>GitHub: <a href="https://github.com/BeginMan" target="_blank">https://github.com/BeginMan</a></p>
+    <p>douban：<a href="http://www.douban.com/people/70526937/">http://www.douban.com/people/70526937/</a></p>
+    <p>邮箱： <a href="#">xinxinyu2011#163</a></p>
+    <p>Cnblog： <a href="http://www.cnblogs.com/BeginMan/">http://www.cnblogs.com/BeginMan/</a></p>
+    <p class="small_hr">本站搭建在新浪SAE,图片存储在七牛云，采用Django1.5+Python2.7+Mysql开发，源码开放。</p>
+    <hr/>
+<p><b>无论现在多么艰苦，我依然昂首向前！</b></p>
+</div>
+{% endblock %}
