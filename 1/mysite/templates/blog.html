@@ -78,8 +78,8 @@ var duoshuoQuery = {short_name:"beginman"};
               var img_w = $(this).width();//图片宽度
                var img_h = $(this).height();//图片高度
                if(img_w>800){//如果图片宽度超出容器宽度--要撑破了
-                    var height = (w*img_h)/img_w; //高度等比缩放
-                    $(this).css({"width":w,"height":height});//设置缩放后的宽度和高度
+                    var height = (img_w*img_h)/img_w; //高度等比缩放
+                    $(this).css({"width":img_w,"height":height});//设置缩放后的宽度和高度
                 }
              //$(this).css('width', '800px');
          })

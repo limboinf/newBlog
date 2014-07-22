@@ -43,3 +43,9 @@ urlpatterns += patterns('mysite.views',
     url(r'^pic/(?P<id>\d+)/$', 'picView', name='picView'),          # 图片
 
 )
+
+#接口数据
+urlpatterns += patterns('mysite.views',
+    url(r'^api/category/$', 'getCategory', name='getCategory'),         # 获取分类
+    url(r'^api/tag/$', 'getTag', name='getTag'),                        # 获取标签
+)

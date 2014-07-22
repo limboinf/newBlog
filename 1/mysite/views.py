@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponse
 from mysite.models import *
-import string
+import simplejson as json
 from common.superqiniu import SuperQiniu
 from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
@@ -89,7 +89,6 @@ def blog(request, id=None):
     context['blog'] = blog
     context['id'] = id
     context['pn'] = get_neighbour(id)
-    print context['pn']
     return render(request, 'blog.html', context)
 
 
@@ -257,3 +256,15 @@ def picView(request, id):
     context['type'] = PicType.objects.get(pk=id)
     context['pics'] = MyPic.objects.filter(type=id).order_by('-id')
     return render(request, 'pic/pic.html', context)
+
+
+def getCategory(request):
+    """getCategory API"""
+    data = list(Type.objects.order_by('-id').values('id', 'name'))
+    return HttpResponse(json.dumps(data))
+
+
+def getTag(request):
+    """getTag API"""
+    data = list(Tag.objects.order_by('-id').values('id', 'name'))
+    return HttpResponse(json.dumps(data))

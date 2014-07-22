@@ -36,7 +36,8 @@ def addBlog(request):
             content = formData.get('content')
             type = formData.get('type')
             tags = request.POST.get('id_tag', '')
-            obj = int(request.POST.get('edit_or_creat'))    # 编辑还是创建
+            obj = int(request.POST.get('edit_or_creat', 0))    # 编辑还是创建
+            print tags, type, title
             now = datetime.datetime.now()
             # 保存theme
             # 将markdown格式转换纯文本

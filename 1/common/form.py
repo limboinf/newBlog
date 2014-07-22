@@ -79,7 +79,6 @@ class LoginForm(forms.Form):
         is_first = False
         if self.user_cache and self.user_cache.type == -1:
             is_first = True
-            self.user_cache.type == 0
             self.user_cache.save()
         return is_first
 
