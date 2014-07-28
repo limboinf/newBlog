@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="baidu-site-verification" content="NUsz4KOeLP" />
     <title>BeginMan的博客</title>
     <!-- All in One SEO Pack 2.1.7 by Michael Torbert of Semper Fi Web Design[326,357] -->
     <meta name="description" content="BeginMan. 享受编程和技术所带来的快乐 – http://blog.beginman.cn/" />
@@ -32,7 +31,8 @@
     {% block css %}{% endblock %}
   </head>
   <body>
-    {% include 'common/head.html' %}
+    {% if not is_blog_view %}{% include 'common/head.html' %}{% else %}<a href="/" class="text-center" style="display: block; margin: 0 auto">返回首页</a>{% endif %}
+    {% if not is_blog_view %}
     <div class="container theme-showcase" style="width: 1250px;">
         <div class="row">
             <!--左侧-->
@@ -52,20 +52,21 @@
             </div>
         </div>
     </div> <!-- /container -->
+    {% else %}
+        <div class="container theme-showcase" style="width: 1250px;">
+        <div class="panel-body">
+            {% block contentBlog %}{% endblock %}
+         </div>
+        </div>
+    {% endif %}
     <div class="actGotop"><a href="javascript:;" title="返回顶部"></a></div>
-   {% include 'common/footer.html' %}
+   {% if not is_blog_view %}{% include 'common/footer.html' %}{% endif %}
 
     <script src="/site_media/js/jquery-2.0.1.min.js"></script>
     <script src="/site_media/bootstrap/js/bootstrap.min.js"></script>
     <script src="/site_media/js/jquery.jbasicext.js"></script>
     <script src="/site_media/js/common.js"></script>
-    <!--百度统计-->
-    <script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fc65358e73ce306691a49ae5119f58783' type='text/javascript'%3E%3C/script%3E"));
-    </script>
 
-    <!--end-->
   </body>
 	<script type="text/javascript">
 	$(function(){   
@@ -79,7 +80,7 @@
 	    $('.actGotop').click(function(){
 	    $('html,body').animate({scrollTop: '0px'}, 800);});
         // 异步加载侧栏
-        getSideinfo();
+       {% if not is_blog_view %} getSideinfo();{% endif %}
 	});
     function getSideinfo(){
         var url='/blog/common/'

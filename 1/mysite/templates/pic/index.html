@@ -13,7 +13,7 @@
         <h4>{{ obj.title }}</h4>
         <p class="text-muted">{{ obj.desc }}</p>
         <div class="text-muted">发布于：{{ obj.add_time|fun }}&nbsp;&nbsp;共{{ obj.getPicCount }}张图片</div>
-        <p class="text-right"><a href="javascript:;" class="pic_type_del" type="{{ obj.id }}"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;&nbsp;<a href="/manage/pic/create_type/?id={{ obj.id }}" class="picdel"><span class="glyphicon glyphicon-edit"></span></a></p>
+        {% if user.is_active %}<p class="text-right"><a href="javascript:;" class="pic_type_del" type="{{ obj.id }}"><span class="glyphicon glyphicon-remove"></span></a>&nbsp;&nbsp;<a href="/manage/pic/create_type/?id={{ obj.id }}" class="picdel"><span class="glyphicon glyphicon-edit"></span></a></p>{% endif %}
       </div>
     </div>
   </div>

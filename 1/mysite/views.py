@@ -87,6 +87,7 @@ def blog(request, id=None):
     blog.counts += 1
     blog.save()
     context['blog'] = blog
+    context['is_blog_view'] = True
     context['id'] = id
     context['pn'] = get_neighbour(id)
     return render(request, 'blog.html', context)

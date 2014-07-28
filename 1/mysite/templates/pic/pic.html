@@ -6,7 +6,7 @@
 {% endblock %}
 {% block content %}
  <ol class="breadcrumb">
-  <li><a href="#">图片首页</a></li>
+  <li><a href="/pic/">图片首页</a></li>
   <li><a href="javascript:;">{{ type.title }}</a></li>
   {% if user.is_active %}
      <li class="active" style="font-size: 13px;"><a href="/manage/pic/upload_my_pic/{{ type.id }}/">上传图片</a></li>
@@ -17,7 +17,7 @@
     {% autopaginate pics 30 %}
     {% for obj in pics %}
         {% if forloop.counter == 1 %}
-            <img class="lazy img-responsive" src="/site-media/lazyload/img/grey.gif" data-original="{{ obj.getPic.img }}" width="800" height="574" alt=""><br/>
+            <img class="lazy img-responsive" src="/site-media/lazyload/img/grey.gif" data-original="{{ obj.getPic.img }}" alt=""><br/>
 
         {% else %}
             <img class="lazy img-responsive" data-original="{{ obj.getPic.img }}" width="800" height="574" alt=""><br/>
@@ -63,6 +63,17 @@ var duoshuoQuery = {short_name:"beginman"};
          $("img.lazy").lazyload({
              effect : "fadeIn"
          });
+         // 图片处理
+         $('#container').find('img').each(function(){
+             $(this).addClass('img-thumbnail');
+              var img_w = $(this).width();//图片宽度
+               var img_h = $(this).height();//图片高度
+               if(img_w>800){//如果图片宽度超出容器宽度--要撑破了
+                    var height = (img_w*img_h)/img_w; //高度等比缩放
+                    $(this).css({"width":img_w,"height":height});//设置缩放后的宽度和高度
+                }
+             //$(this).css('width', '800px');
+         })
   });
     </script>
 {% endblock %}

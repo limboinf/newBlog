@@ -2,6 +2,9 @@ body {
   padding-top: 70px;
   padding-bottom: 30px;
   background:url("../img/gray_jean.png") #FFF;
+  color:#333;
+  background:#fdfdfd;
+  font:15px/1.625 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .theme-dropdown .dropdown-menu {
@@ -145,3 +148,4 @@ body {
     white-space: pre-wrap; /* CSS 2.1 */
     white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 }
+.code{width: 1145px;}
