@@ -16,6 +16,7 @@ urlpatterns = patterns('',
 # Serve static files for admin, use this for debug usage only
 # `python manage.py collectstatic` is preferred.
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from common.rss import LatestEntriesFeed
 urlpatterns += staticfiles_urlpatterns()
 
 urlpatterns += patterns('',
@@ -41,6 +42,7 @@ urlpatterns += patterns('mysite.views',
 
     url(r'^pic/$', 'pic', name='pic'),          # 图片首页
     url(r'^pic/(?P<id>\d+)/$', 'picView', name='picView'),          # 图片
+    url(r'^feed/$', LatestEntriesFeed()),
 
 )
 

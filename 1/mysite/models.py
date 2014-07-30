@@ -28,6 +28,7 @@ class Blog(models.Model):
     type = models.IntegerField(default=0)
     img = models.CharField(max_length=500, null=True) # 博客导图
     summary = models.CharField(max_length=500, null=True)
+    rss = models.CharField(max_length=1024, null=True)  # 订阅源
     content = wmd_models.MarkDownField()
     content_show = wmd_models.MarkDownField(u'正文显示', null=True)
     add_date = models.DateTimeField()

@@ -44,6 +44,7 @@ QINIU_SECRET_KEY = 'NUpZChuUdkMnzi7RyJGaIq2OyffSzaVzLxjxqJz0'
 QINIU_BUCKET_NAME = 'beginman'
 QINIU_DOMAIN = 'beginman.qiniudn.com'  # 域名
 
+
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
@@ -52,7 +53,6 @@ QINIU_DOMAIN = 'beginman.qiniudn.com'  # 域名
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
 TIME_ZONE = 'Asia/Shanghai'
-
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html

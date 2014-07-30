@@ -117,12 +117,13 @@ def uploadBlog(request):
             title = u'一个神秘的标题'
 
         html = markdown(body)
+        rss = ''.join(BeautifulSoup(html).findAll(text=True))  # rss订阅源
         if len(body) > 500:
             html = markdown(body[:500])
 
         summary = ''.join(BeautifulSoup(html).findAll(text=True))
         blog = Blog.objects.create(
-                    title=title, type=int(type), summary=summary, content=body, add_date=now
+                    title=title, type=int(type), summary=summary,rss=rss, content=body, add_date=now
                 )
         # 博客导图
         img = getPic(blog.content_show)
