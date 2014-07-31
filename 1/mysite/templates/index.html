@@ -19,7 +19,7 @@
                         <a href="/blog/type/{{ obj.type }}/" class="label label-warning navbar-text navbar-right">{{ obj.getType.name }}</a>
                     </strong>
                 </p>
-                <small>{{ obj.summary|cut_title:'200' }}</small>
+                <small>{% if obj.is_show %}密文:需要密码才能访问{% else %}{{ obj.summary|cut_title:'200' }}{% endif %}</small>
                 <p class="small_hr">
                     作者：<a href="http://about.me/beginman" class="small">BeginMan</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;热度：{{ obj.counts }}℃

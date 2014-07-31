@@ -33,6 +33,7 @@ class Blog(models.Model):
     content_show = wmd_models.MarkDownField(u'正文显示', null=True)
     add_date = models.DateTimeField()
     counts = models.IntegerField(default=0)     # 点击率
+    is_show = models.CharField(max_length=100, null=True)        # 加密
     def __unicode__(self):
         return self.title
 

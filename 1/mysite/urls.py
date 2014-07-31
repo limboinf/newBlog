@@ -43,6 +43,8 @@ urlpatterns += patterns('mysite.views',
     url(r'^pic/$', 'pic', name='pic'),          # 图片首页
     url(r'^pic/(?P<id>\d+)/$', 'picView', name='picView'),          # 图片
     url(r'^feed/$', LatestEntriesFeed()),
+    url(r'^pigeonhole/$', 'pigeonhole', name='pigeonhole'),          # 归档
+    url(r'^ciphertext/(?P<id>\d+)/$', 'ciphertext', name='ciphertext'),          # 密文
 
 )
 

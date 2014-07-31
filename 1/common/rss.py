@@ -14,7 +14,7 @@ class LatestEntriesFeed(Feed):
 
     def items(self):
         """数据源对象"""
-        return Blog.objects.order_by('-add_date')[:10]       # 订阅最新10篇
+        return Blog.objects.filter(is_show__isnull=True).order_by('-add_date')[:10]       # 订阅最新10篇
 
     def item_title(self, item):
         """数据源标题"""

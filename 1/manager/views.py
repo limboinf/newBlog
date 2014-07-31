@@ -33,27 +33,30 @@ def addBlog(request):
         if form.is_valid():
             formData = form.cleaned_data
             title = formData.get('title')
+            pwd = formData.get('is_show', '')
+            print 'aaaaaaaaaa', pwd
             content = formData.get('content')
             type = formData.get('type')
             tags = request.POST.get('id_tag', '')
             obj = int(request.POST.get('edit_or_creat', 0))    # 编辑还是创建
-            print tags, type, title
             now = datetime.datetime.now()
+
             # 保存theme
             # 将markdown格式转换纯文本
 
             from markdown import markdown
             html = markdown(content)
+            rss = ''.join(BeautifulSoup(html).findAll(text=True))  # rss订阅源
             if len(content) > 500:
                 html = markdown(content[:500])
             summary = ''.join(BeautifulSoup(html).findAll(text=True))
 
             if obj:     # 编辑状态
-                blog = Blog.objects.filter(id=obj).update(title=title, type=int(type), summary=summary, content=content, add_date=now)
+                blog = Blog.objects.filter(id=obj).update(title=title, type=int(type), summary=summary,rss=rss, content=content, add_date=now, is_show=pwd)
                 blog = Blog.objects.get(id=obj)
             else:
                 blog = Blog.objects.create(
-                    title=title, type=int(type), summary=summary, content=content, add_date=now
+                    title=title, type=int(type), summary=summary, rss=rss, content=content, add_date=now, is_show=pwd
                 )
             # 博客导图
             img = getPic(blog.content_show)

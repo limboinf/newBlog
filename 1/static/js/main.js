@@ -72,6 +72,7 @@ function addTheme(){
         tags = JSON.stringify(tags);
         $('input[name="id_tag"]').val(tags);
         var title = $.trim($('#id_title').val());
+        var pwd = $.trim($('#id_is_show').val());
         if(!title){
             return alert('填写标题了');
         }

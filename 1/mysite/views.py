@@ -84,6 +84,8 @@ def blog(request, id=None):
     """详细页面"""
     context = {}
     blog = Blog.objects.get(pk=id)
+    if blog.is_show:
+        return HttpResponseRedirect('/ciphertext/%s/' %id)
     blog.counts += 1
     blog.save()
     context['blog'] = blog
@@ -269,3 +271,43 @@ def getTag(request):
     """getTag API"""
     data = list(Tag.objects.order_by('-id').values('id', 'name'))
     return HttpResponse(json.dumps(data))
+
+def pigeonhole(request):
+    blogs= Blog.objects.values('id','title', 'add_date').order_by('-add_date')
+    dates = set([str(i['add_date'].year)+str(i['add_date'].month) for i in blogs])
+    blogs_list = []
+
+    for i in dates:
+        dic = {}
+        b_info = []
+        count = 0
+        dic['ym'] = i[:4]+u'年'+i[4:]+u'月'
+        for obj in blogs:
+            if str(obj['add_date'].year)+str(obj['add_date'].month) == i:
+                dic_ = {}
+                dic_['blog'] = "<a href='/blog/%s/'>%s</a>" %(obj['id'], obj['title'])
+                b_info.append(dic_)
+                count += 1
+        dic['count'] = count
+        dic['b_info'] = b_info
+        blogs_list.append(dic)
+    return render(request, 'common/pigeonhole.html', {'blogs_list':blogs_list})
+
+
+def ciphertext(request, id=None):
+    if id and Blog.objects.filter(id=id).exists():
+        blog = Blog.objects.get(pk=id)
+        pwd = blog.is_show
+        if request.method == 'POST':
+            inp_pwd = request.POST.get('pwd', '')
+            if inp_pwd == pwd:
+                context = {}
+                blog.counts += 1
+                blog.save()
+                context['blog'] = blog
+                context['is_blog_view'] = True
+                context['id'] = id
+                context['pn'] = get_neighbour(id)
+                return render(request, 'blog.html', context)
+        return render(request, 'common/ciphertext.html')
+    return HttpResponseRedirect('/404/')

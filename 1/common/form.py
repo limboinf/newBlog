@@ -137,13 +137,16 @@ class BlogForm(ModelForm):
         attrs={'class': 'form-control', 'placeholder': u'标题', 'required': ''})
     )
     type = forms.IntegerField()
+    is_show = forms.CharField(required=False, max_length=100, label=u'加密', widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': u'密码'})
+    )
     content = forms.CharField(label=u'内容',widget=MarkDownInput(
         attrs={'class': 'form-control', 'placeholder': u'内容', 'required': ''})
     )
 
     class Meta:
         model = Blog
-        fields = ('title','type', 'content')
+        fields = ('title','type', 'content', 'is_show')
 
 
 class WikiForm(ModelForm):

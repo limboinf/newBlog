@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-signin2" role="form" id="themeform" action="{{ request.path }}" method="post">
+         {% csrf_token %}
+  <div class="form-group">
+     <input  name="pwd" id="pwd" type="password" class="form-control"  placeholder="此博客加密,请输入密码访问"/>&nbsp;
+  </div>
+  <button type="submit" class="btn btn-default" id="conOk">Confirm identity</button>
+ </form>
+{% endblock %}
+
