@@ -53,3 +53,9 @@ urlpatterns += patterns('mysite.views',
     url(r'^api/category/$', 'getCategory', name='getCategory'),         # 获取分类
     url(r'^api/tag/$', 'getTag', name='getTag'),                        # 获取标签
 )
+
+
+#english
+urlpatterns += patterns('mysite.english',
+    url(r'^english/$', 'learnEnglish', name='learnEnglish'),         # english index
+)

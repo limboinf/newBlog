@@ -149,3 +149,4 @@ body {
     white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
 }
 .code{width: 1145px;}
+.words{font-size: 16px; font-weight: bold; color: #ca6a76;}

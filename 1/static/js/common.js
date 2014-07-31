@@ -34,6 +34,10 @@ function webnav(){
         $('#webnav li').removeClass();
         $('#resume').addClass('active');
     }
+    if(path.indexOf('english') > -1){
+        $('#webnav li').removeClass();
+        $('#english').addClass('active');
+    }
 }
 
 

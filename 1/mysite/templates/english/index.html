@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="alert alert-info">
+<script type="text/javascript" src="http://open.iciba.com/ds_open.php?id=9493&name=BeginMan%E7%9A%84%E5%8D%9A%E5%AE%A2&auth=8C0EC2FB7F36DDC7CF6A1CE3553A601E" charset="utf-8"></script>
+</div>
+<div>
+    <hr/>
+<h2>每日词语解析 <span class="text-muted" style="font-size: 12px;">定期爬虫</span></h2>
+    {{ words|safe}}
+
+</div>
+{% endblock %}
+{% block js %}
+    <script>
+    $(function(){
+        $('.content>p:gt(0)').each(function(){
+            var txt = $(this).text();
+            if(/^\w/.test(txt)){
+                $(this).addClass('words');
+            }
+        })
+    })
+    </script>
+{% endblock %}
