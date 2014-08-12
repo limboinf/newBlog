@@ -34,7 +34,6 @@ def addBlog(request):
             formData = form.cleaned_data
             title = formData.get('title')
             pwd = formData.get('is_show', '')
-            print 'aaaaaaaaaa', pwd
             content = formData.get('content')
             type = formData.get('type')
             tags = request.POST.get('id_tag', '')

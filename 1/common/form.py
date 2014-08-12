@@ -5,7 +5,7 @@ import random
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
-from mysite.models import Type, Blog, Wiki, PicType, MyPic
+from mysite.models import Type, Blog, Wiki, PicType, MyPic, Words
 from PIL import Image
 import string
 from wmd.widgets import MarkDownInput   # 从wmd编辑器导入html组件
@@ -192,3 +192,13 @@ class MypicForm(ModelForm):
     class Meta:
         model = MyPic
         fields = ('type', 'desc')
+
+
+class WordsForm(ModelForm):
+    english = forms.CharField(label=u'单词',widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': u'E文'})
+    )
+
+    class Meta:
+        model = Words
+        fields = ('english',)

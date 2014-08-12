@@ -58,4 +58,8 @@ urlpatterns += patterns('mysite.views',
 #english
 urlpatterns += patterns('mysite.english',
     url(r'^english/$', 'learnEnglish', name='learnEnglish'),         # english index
+    url(r'^english/word/$', 'words', name='words'),         # english index
+    url(r'^english/add_edit_words/(?P<type>\d+)/(?P<id>\d+)/', 'add_edit_words', name='add_edit_words'),
+    url(r'^english/ok/', 'done', name='done'),
+    url(r'^english/has_done/', 'has_done', name='has_done'),
 )

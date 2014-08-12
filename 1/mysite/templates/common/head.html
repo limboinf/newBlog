@@ -13,13 +13,25 @@
         </div>
         <div class="navbar-collapse collapse" id="webnav">
           <ul class="nav navbar-nav">
+            <li><a href="http://beginman.cn/">Home</a></li>
             <li class="active"><a href="/">Blog</a></li>
             <li id="wiki"><a href="/wiki/">Wiki</a></li>
             <li id="pic"><a href="/pic/">Picture</a></li>
             <li id="about"><a href="/about/">About</a></li>
-            <li id="contact"><a href="/resume/">Resume</a></li>
-            <li id="english"><a href="/english/">每日英语</a></li>
-            <li id="contact"><a href="http://jianshu.io/users/326dee56a4f1/latest_articles">文笔</a></li>
+            <li id="contact" style="display: none"><a href="/resume/">Resume</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">English<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/english/">每日英语</a></li>
+                <li><a href="/english/word/">每日单词</a></li>
+                <li class="divider"></li>
+                <!--<li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+                -->
+              </ul>
+            </li>
+            <li id="contact" style="display: none"><a href="http://jianshu.io/users/326dee56a4f1/latest_articles">文笔</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load pagination_tags %}
+{% block content %}
+    <div class="jumbotron">
+      <p>已经有<b class="text-danger" id="no_done">{{ mywords|length }}</b>个单词收入脑袋中!</p>
+      <p><a class="btn btn-primary btn-lg" role="button" href="/english/word/">Learn more</a></p>
+    </div>
+<div>
+{% autopaginate mywords 30 %}
+<div class="panel-group" id="accordion">
+  {% for obj in mywords %}
+  <div class="panel panel-default">
+    <div class="panel-heading" id="word_{{ obj.id }}">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne_{{ obj.id }}">
+           <h3>{{ forloop.counter }}. {{ obj.english }}&nbsp; <span class="text-muted" style="font-size: 13px">[{{ obj.phonetic }}]</span>&nbsp;&nbsp;
+                <a style="font-size: 16px;" href="javascript:;" onmouseout="clearTimeout(timer);" onmouseover="iciba_common_top_onSecondDelay('http://dict.youdao.com/dictvoice?audio={{ obj.english }}');" title="TTS发音" class="sound pr">
+                    <span class="glyphicon glyphicon-volume-up"></span>
+                </a>
+                {% if user.is_active %}
+                    <a href="/english/add_edit_words/{{ word.id|default:0 }}/{{ obj.id }}/" style="font-size: 12px; margin-left: 20px;"><b>编辑</b></a>
+                    <a href="javascript:;" onclick="markIt({{ obj.id }}, 0)" style="font-size: 12px; margin-left: 20px;">标记生疏</a>
+                {% endif %}
+           </h3>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne_{{ obj.id }}" class="panel-collapse collapse">
+      <div class="panel-body">
+           <p>{{ obj.explain|safe }}</p>
+           <p class="text-muted">{{ obj.seq|safe }}</p>
+      </div>
+    </div>
+  </div>
+ {% endfor %}
+</div>
+<div class="text-center text-danger">{% paginate %}</div>
+</div>
+<!--有道划词api-->
+    <div id="YOUDAO_SELECTOR_WRAPPER" style="display:none; margin:0; border:0; padding:0; width:320px; height:240px;"></div>
+    <script type="text/javascript" src="http://fanyi.youdao.com/openapi.do?keyfrom=BeginMan&key=1554050065&type=selector&version=1.2&translate=on" charset="utf-8"></script>
+<!--end-->
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="/site_media/js/audio.js"></script>
+    <script type="text/javascript" src="/site_media/js/english.js"></script>
+{% endblock %}

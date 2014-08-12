@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<form class="form-signin" role="form" action="{{ request.path }}" method='post'>{% csrf_token %}
+        {{ f.as_p }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">保 存</button>
+      </form>
+{% endblock %}
