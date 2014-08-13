@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>博客归档</h2>
+<p class="text-muted">迄今为止,孜孜不倦的博主已经写了 <code>{{ count }}</code> 篇博客了,一入代码深似海,共勉吧!</p>
 {% for obj in blogs_list %}
     <b>{{ obj.ym }}({{ obj.count }})</b>
     <ul>

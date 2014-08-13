@@ -11,6 +11,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import get_object_or_404
 import random
 
+
 def home(request):
     """网站首页."""
     context = {}
@@ -274,6 +275,7 @@ def getTag(request):
 
 def pigeonhole(request):
     blogs= Blog.objects.values('id','title', 'add_date').order_by('-add_date')
+    counts = len(blogs)
     dates = set([str(i['add_date'].year)+str(i['add_date'].month) for i in blogs])
     blogs_list = []
 
@@ -291,7 +293,7 @@ def pigeonhole(request):
         dic['count'] = count
         dic['b_info'] = b_info
         blogs_list.append(dic)
-    return render(request, 'common/pigeonhole.html', {'blogs_list':blogs_list})
+    return render(request, 'common/pigeonhole.html', {'blogs_list':blogs_list, 'count':counts})
 
 
 def ciphertext(request, id=None):

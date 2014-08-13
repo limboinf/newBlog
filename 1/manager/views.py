@@ -13,6 +13,7 @@ from common.superqiniu import SuperQiniu
 from BeautifulSoup import BeautifulSoup
 from markdown import markdown
 
+
 def manage(request):
     """后台"""
     context = {}
@@ -78,6 +79,7 @@ def addBlog(request):
                 # 创建ThemeTag
                 for i in tag_list:
                     BlogTag.objects.create(blog=blog, tag=i)
+
             return HttpResponseRedirect('/')
 
         context['form'] = form
