@@ -115,7 +115,6 @@ def has_done(request):
 
 @login_required(login_url='/login/')
 def add_edit_words(request, type=0, id=0):
-    """type:0 add; 1:edit"""
     context = {}
     id = int(id)
     type = int(type)   # word主记录 id

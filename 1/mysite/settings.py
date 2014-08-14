@@ -1,7 +1,8 @@
 # coding=utf-8
 # Django settings for mysite project.
 
-DEBUG = True
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

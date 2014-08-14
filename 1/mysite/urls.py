@@ -63,3 +63,6 @@ urlpatterns += patterns('mysite.english',
     url(r'^english/ok/', 'done', name='done'),
     url(r'^english/has_done/', 'has_done', name='has_done'),
 )
+
+handler500 = 'mysite.views.cus_500_err'
+handler404 = 'mysite.views.cus_404_err'

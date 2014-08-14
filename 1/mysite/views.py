@@ -313,3 +313,10 @@ def ciphertext(request, id=None):
                 return render(request, 'blog.html', context)
         return render(request, 'common/ciphertext.html')
     return HttpResponseRedirect('/404/')
+
+
+def cus_500_err(request):
+    return render(request, 'common/500.html')
+
+def cus_404_err(request):
+    return render(request, 'common/404.html')
